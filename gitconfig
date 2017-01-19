@@ -1,0 +1,9 @@
+[user]
+    name = Chris Muthig
+    email = camuthig@gmail.com
+
+[core]
+    editor = vim
+
+[color]
+    ui = auto
