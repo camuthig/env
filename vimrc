@@ -110,3 +110,4 @@ colorscheme elflord
 
 " Ctrl-P config
 map <c-b> :CtrlPBuffer<CR>
+let g:ctrlp_working_path_mode = 'ra'
