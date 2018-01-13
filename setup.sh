@@ -4,6 +4,7 @@
 echo Installing tools
 if [ -f /etc/redhat-release ]; then
     sudo yum install -y \
+        curl \
         vim \
         zsh \
         ssh \
@@ -12,6 +13,7 @@ if [ -f /etc/redhat-release ]; then
 fi
 if [ -f /etc/lsb-release ]; then
     sudo apt-get install -y \
+        curl \
         vim \
         zsh \
         ssh \
