@@ -4,7 +4,7 @@ set nocompatible
 " Helps force plugins to load correctly when it is turned back on below
 filetype off
 
-" Set leader 
+" Set leader
 let mapleader = ","
 
 " Load plugins here (pathogen or vundle)
@@ -17,6 +17,18 @@ Plug 'tpope/vim-fugitive'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'pangloss/vim-javascript'
 Plug 'derekwyatt/vim-scala'
+Plug 'jparise/vim-graphql'
+Plug 'mustache/vim-mustache-handlebars'
+
+" Language Server
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'ryanolsonx/vim-lsp-python'
+
+" Colors
+Plug 'aonemd/kuroi.vim'
 
 call plug#end()
 
@@ -31,6 +43,7 @@ set modelines=0
 
 " Show line numbers
 set number
+set relativenumber
 
 " Show file stats
 set ruler
@@ -101,13 +114,40 @@ map <leader>l :set list!<CR> " Toggle tabs and EOL
 " Color scheme (terminal)
 set t_Co=256
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
+"set termguicolors
+"let g:solarized_termcolors=256
+"let g:solarized_termtrans=1
 " put https://raw.github.com/altercation/vim-colors-solarized/master/colors/solarized.vim
 " in ~/.vim/colors/ and uncomment:
 " colorscheme solarized
-colorscheme elflord
+"colorscheme elflord
+colorscheme kuroi
 
 " Ctrl-P config
 map <c-b> :CtrlPBuffer<CR>
 let g:ctrlp_working_path_mode = 'ra'
+
+" Python
+if executable('pyls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+
+" Rust
+if executable('rls')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'rls',
+        \ 'cmd': {server_info->['rustup', 'run', 'stable', 'rls']},
+        \ 'workspace_config': {'rust': {'clippy_preference': 'on'}},
+        \ 'whitelist': ['rust'],
+        \ })
+endif
+
+" LSP config
+nmap \gd :LspDefinition<cr>
+nmap \gt :tab split<cr>:LspDefinition<cr>
+nmap \gs :sp<cr>:LspDefinition<cr>
+nmap \gv :vsp<cr>:LspDefinition<cr>
