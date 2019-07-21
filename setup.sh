@@ -9,7 +9,8 @@ if [ -f /etc/redhat-release ]; then
         zsh \
         ssh \
         git \
-        git-flow
+        git-flow \
+        tmux
 fi
 if [ -f /etc/lsb-release ]; then
     sudo apt-get install -y \
@@ -18,7 +19,8 @@ if [ -f /etc/lsb-release ]; then
         zsh \
         ssh \
         git \
-        git-flow
+        git-flow \
+        tmux
 fi
 
 # Install Vim Plug
@@ -33,6 +35,14 @@ cp vimrc ~/.vimrc
 # Set gitconfig
 echo Setting up gitconfig
 cp gitconfig ~/.gitconfig
+
+# Set Kitty config
+echo Setting up kitty
+cp kitty.conf ~/.config/kitty/kitty.conf
+
+# Set tmux config
+echo Seeting up tmux
+cp tmux.conf ~/.tmux.conf
 
 # Install oh-my-zsh
 echo Installing oh-my-zsh
