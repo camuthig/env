@@ -51,7 +51,7 @@ ZSH_THEME="juanghurtado"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git github git-flow composer npm sudo)
+plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,3 +83,38 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+source ~/.aliases
+export PATH="$HOME/.local/bin:/opt:$PATH"
+export EDITOR=vim
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/usr/local/share/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/share/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/usr/local/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/share/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Python
+# Quiet warnings
+export PYTHONWARNINGS="ignore"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+
+# Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
+# Ruby
+if [ -f '/etc/profile.d/rvm.sh' ]; then
+    source /etc/profile.d/rvm.sh
+fi
+
+# Kitty
+if [ x "$(command -v kitty)" ]; then
+    autoload -Uz compinit
+    compinit
+    # Completion for kitty
+    kitty + complete setup zsh | source /dev/stdin
+fi
+
+# Tmuxinator
+if [ -f '~/.rvm/gems/ruby-2.6.0/gems/tmuxinator-1.1.0/completion/tmuxinator.zsh' ]; then
+    source ~/.rvm/gems/ruby-2.6.0/gems/tmuxinator-1.1.0/completion/tmuxinator.zsh
+fi
