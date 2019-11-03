@@ -2,17 +2,18 @@
 # keys to make it easier to navigate within Linux GUI environments.
 # This files makes the following changes:
 #
-# Caps Lock -> Hyper
+# Caps Lock    ->Super_R
 # Left Windows -> Meta
-# Right Alt -> Super
+# Right Alt    -> Super_L
 #
 # It defines modifiers as
 #
 # lock
+# control     Control_L (0x25),  Control_R (0x69)
 # mod1        Alt_L (0x40),  Meta_L (0xcd)
 # mod2        Meta_L (0x85)
-# mod3        Hyper_L (0x42),  Hyper_L (0xcf)
-# mod4        Super_L (0x6c),  Super_R (0x86),  Super_L (0xce)
+# mod3        Super_R (0x42),  Hyper_L (0xcf)
+# mod4        Super_R (0x42),  Super_L (0x6c),  Super_L (0xce)
 #
 # The shift, control and mod5 modifiers are left as they are.
 #
@@ -23,11 +24,10 @@
 default hidden partial modifier_keys
 xkb_symbols "mymods" {
     # Remove Hyper (Hyper_L/Hyper_R) from Mod4, was added by "pc" layout
-    key <HYPR> { [ Hyper_L, Hyper_R ] };
-    modifier_map none { <HYPR> };
+    modifier_map Mod3 { <HYPR> };
 
-    # Remap caps to hyper
-    key <CAPS> { [ Hyper_L, Hyper_R ] };
+    # Remap caps to right super and Mod3
+    key <CAPS> { [ Super_R ] };
     modifier_map Mod3 { <CAPS> };
 
     # Remap left alt to Mod1
@@ -37,7 +37,7 @@ xkb_symbols "mymods" {
 
 
     # Remap right alt to super key
-    key <RALT> { [ Super_L, Super_R ] };
+    key <RALT> { [ Super_L ] };
     modifier_map Mod4   { <RALT> };
 
     # Remap left window to meta
