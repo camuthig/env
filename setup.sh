@@ -23,6 +23,9 @@ if [ -f /etc/lsb-release ]; then
         tmux
 fi
 
+# Add config directory
+mkdir ~/.config
+
 # Install Vim Plug
 echo Install VIM plugins
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
@@ -46,6 +49,6 @@ cp tmux.conf ~/.tmux.conf
 
 # Install oh-my-zsh
 echo Installing oh-my-zsh
+RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cp zshrc ~/.zshrc
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
