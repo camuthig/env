@@ -107,7 +107,7 @@ if [ -f '/etc/profile.d/rvm.sh' ]; then
 fi
 
 # Kitty
-if [ x "$(command -v kitty)" ]; then
+if [ -x "$(command -v kitty)" ]; then
     autoload -Uz compinit
     compinit
     # Completion for kitty
