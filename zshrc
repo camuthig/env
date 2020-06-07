@@ -7,7 +7,9 @@ export ZSH=~/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="juanghurtado"
+#ZSH_THEME="juanghurtado"
+#source $ZSH/custom/plugins/zsh-vim-mode/zsh-vim-mode.plugin.zsh
+ZSH_THEME="camuthig"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,8 +53,30 @@ ZSH_THEME="juanghurtado"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux)
+export PATH="$HOME/.local/bin:/opt:$PATH"
+plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux poetry)
 
+
+# zplug
+if [ -d ~/.zplug ]; then
+    source ~/.zplug/init.zsh
+
+    zplug "softmoth/zsh-vim-mode"
+
+    # Install plugins if there are plugins that have not been installed
+    if ! zplug check --verbose; then
+        printf "Install? [y/N]: "
+        if read -q; then
+            echo; zplug install
+        fi
+    fi
+
+    # Then, source plugins and add commands to $PATH
+    zplug load &> /dev/null
+fi
+# end zplug
+
+# Override zplug with oh-my-zsh as needed
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -62,48 +86,46 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # ssh
 # export SSH_KEY_PATH="~/.ssh/rsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 source ~/.aliases
-export PATH="$HOME/.local/bin:/opt:$PATH"
 export EDITOR=vim
 
+# Google Cloud
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/share/google-cloud-sdk/path.zsh.inc' ]; then . '/usr/local/share/google-cloud-sdk/path.zsh.inc'; fi
-
+if [ -f '/usr/local/share/google-cloud-sdk/path.zsh.inc' ]; then
+    . '/usr/local/share/google-cloud-sdk/path.zsh.inc'
+fi
 # The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/share/google-cloud-sdk/completion.zsh.inc' ]; then . '/usr/local/share/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/usr/local/share/google-cloud-sdk/completion.zsh.inc' ]; then
+    . '/usr/local/share/google-cloud-sdk/completion.zsh.inc'
+fi
+# end Google Cloud
 
 # Python
 # Quiet warnings
 export PYTHONWARNINGS="ignore"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
+if [ -d "$HOME/.poetry" ]; then
+    export PATH="$HOME/.poetry/bin:$PATH"
+fi
 
 # Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+if [ -d "$HOME/.cargo" ]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi
 
 # Ruby
 if [ -f '/etc/profile.d/rvm.sh' ]; then
     source /etc/profile.d/rvm.sh
+fi
+
+# Golang
+if [ -x "$(command -v go)" ]; then
+    export GOPATH="$HOME/go"
+    export PATH="/usr/lib/go/bin:$PATH"
+    export PATH="$GOPATH/bin:$PATH"
 fi
 
 # Kitty
@@ -118,3 +140,12 @@ fi
 if [ -f '~/.rvm/gems/ruby-2.6.0/gems/tmuxinator-1.1.0/completion/tmuxinator.zsh' ]; then
     source ~/.rvm/gems/ruby-2.6.0/gems/tmuxinator-1.1.0/completion/tmuxinator.zsh
 fi
+
+# Windows WSL Specific
+if [ -d '/mnt/wsl' ]; then
+    export BROWSER='/mnt/c/Program Files/Mozilla Firefox/firefox.exe'
+fi
+
+# Turn on vim mode
+bindkey -v
+export KEYTIMEOUT=1

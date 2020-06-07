@@ -36,6 +36,18 @@ ZSH_THEME_GIT_PROMPT_SHA_AFTER="%{$WHITE%}]"
 
 # Format for BitBucket updates alert
 parse_bb_alerts () {
+        if [[ ! $(command -v liza) ]]
+        then
+            echo ""
+            exit
+        fi
+
+        if [ "$LIZA_ENABLED" != true ]
+        then
+            echo ""
+            exit
+        fi
+
         local COUNT
 
         COUNT=$(python ~/projects/camuthig/python-liza-cli/liza_cli/liza.py updates --count)
@@ -48,8 +60,16 @@ parse_bb_alerts () {
         fi
 }
 
+MODE_INDICATOR_VIINS="%{$BLUE%}[INSERT]"
+MODE_INDICATOR_VICMD="%{$RED%}[NORMAL]"
+MODE_INDICATOR_REPLACE="%{$BLUE%}[REPLACE]"
+MODE_INDICATOR_SEARCH="%{$BLUE%}[SEARCH]"
+MODE_INDICATOR_VISUAL="%{$BLUE%}[VISUAL]"
+MODE_INDICATOR_VLINE="%{$BLUE%}[V-LINE]"
+
 # Prompt format
+setopt PROMPT_SUBST
 PROMPT='
-%{$GREEN_BOLD%}%n@%m%{$WHITE%}:%{$YELLOW%}%~%u$(parse_bb_alerts)$(parse_git_dirty)$(git_prompt_ahead)%{$RESET_COLOR%}
+%{$GREEN_BOLD%}%n@%m${MODE_INDICATOR_PROMPT}%{$WHITE%}:%{$YELLOW%}%~%u$(parse_bb_alerts)$(parse_git_dirty)$(git_prompt_ahead)%{$RESET_COLOR%}
 %{$BLUE%}>%{$RESET_COLOR%} '
 RPROMPT='%{$GREEN_BOLD%}$(git_current_branch)$(git_prompt_short_sha)$(git_prompt_status)%{$RESET_COLOR%}'
