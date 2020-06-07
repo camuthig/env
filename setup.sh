@@ -52,3 +52,5 @@ echo Installing oh-my-zsh
 RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cp zshrc ~/.zshrc
 
+# Install custom plugins
+git clone git@github.com:softmoth/zsh-vim-mode.git ~/.oh-my-zsh/custom/plugins/zsh-vim-mode

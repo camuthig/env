@@ -54,29 +54,8 @@ ZSH_THEME="camuthig"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export PATH="$HOME/.local/bin:/opt:$PATH"
-plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux poetry)
+plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux poetry zsh-vim-mode)
 
-
-# zplug
-if [ -d ~/.zplug ]; then
-    source ~/.zplug/init.zsh
-
-    zplug "softmoth/zsh-vim-mode"
-
-    # Install plugins if there are plugins that have not been installed
-    if ! zplug check --verbose; then
-        printf "Install? [y/N]: "
-        if read -q; then
-            echo; zplug install
-        fi
-    fi
-
-    # Then, source plugins and add commands to $PATH
-    zplug load &> /dev/null
-fi
-# end zplug
-
-# Override zplug with oh-my-zsh as needed
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
