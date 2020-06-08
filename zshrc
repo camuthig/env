@@ -54,7 +54,7 @@ ZSH_THEME="camuthig"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export PATH="$HOME/.local/bin:/opt:$PATH"
-plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux poetry zsh-vim-mode)
+plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux poetry zsh-vim-mode tmuxinator)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -113,11 +113,6 @@ if [ -x "$(command -v kitty)" ]; then
     compinit
     # Completion for kitty
     kitty + complete setup zsh | source /dev/stdin
-fi
-
-# Tmuxinator
-if [ -f '~/.rvm/gems/ruby-2.6.0/gems/tmuxinator-1.1.0/completion/tmuxinator.zsh' ]; then
-    source ~/.rvm/gems/ruby-2.6.0/gems/tmuxinator-1.1.0/completion/tmuxinator.zsh
 fi
 
 # Windows WSL Specific
