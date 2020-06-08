@@ -54,9 +54,12 @@ ZSH_THEME="camuthig"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 export PATH="$HOME/.local/bin:/opt:$PATH"
-plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux poetry zsh-vim-mode tmuxinator)
+plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux poetry zsh-vim-mode tmuxinator zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
+if [ -f '~/.zshrc.local.pre' ]; then
+    source ~/.zshrc.local.pre
+fi
 
 # User configuration
 
@@ -72,13 +75,11 @@ source ~/.aliases
 export EDITOR=vim
 
 # Google Cloud
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/usr/local/share/google-cloud-sdk/path.zsh.inc' ]; then
-    . '/usr/local/share/google-cloud-sdk/path.zsh.inc'
-fi
-# The next line enables shell command completion for gcloud.
-if [ -f '/usr/local/share/google-cloud-sdk/completion.zsh.inc' ]; then
-    . '/usr/local/share/google-cloud-sdk/completion.zsh.inc'
+# If the system is working with Python3, then GCloud needs to point to a version of Python2.7. To make this
+# work, be sure to add the CLOUDSDK_PYTHON value to an appropriate Python binary
+if [ -x "$(command -v gcloud)" ]; then
+    gcloud_root=$(gcloud info --format flattened | grep installation.sdk_root | cut -d' ' -f2- | xargs)
+    source "$gcloud_root/completion.zsh.inc"
 fi
 # end Google Cloud
 

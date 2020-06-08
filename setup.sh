@@ -53,5 +53,7 @@ RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-
 cp zshrc ~/.zshrc
 
 # Install custom plugins
-git clone git@github.com:softmoth/zsh-vim-mode.git ~/.oh-my-zsh/custom/plugins/zsh-vim-mode
-git clone git@github.com:darvid/zsh-poetry.git ~/.oh-my-zsh/custom/plugins/zsh-poetry
+git clone git@github.com:softmoth/zsh-vim-mode.git $ZSH_CUSTOM/plugins/zsh-vim-mode
+git clone git@github.com:darvid/zsh-poetry.git $ZSH_CUSTOM/plugins/zsh-poetry
+git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
