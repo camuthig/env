@@ -50,7 +50,7 @@ parse_bb_alerts () {
 
         local COUNT
 
-        COUNT=$(python ~/projects/camuthig/python-liza-cli/liza_cli/liza.py updates --count)
+        COUNT=$(liza updates --count)
 
         if [[ $COUNT > 0 ]]
         then
