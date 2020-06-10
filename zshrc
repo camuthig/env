@@ -57,7 +57,7 @@ export PATH="$HOME/.local/bin:/opt:$PATH"
 plugins=(git github git-flow composer npm sudo python pyenv laravel5 gradle mvn tmux poetry zsh-vim-mode tmuxinator zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
-if [ -f '~/.zshrc.local.pre' ]; then
+if [ -f "$HOME/.zshrc.local.pre" ]; then
     source ~/.zshrc.local.pre
 fi
 
@@ -124,3 +124,8 @@ fi
 # Turn on vim mode
 bindkey -v
 export KEYTIMEOUT=1
+
+if [ -f "$HOME/.zshrc.local.post" ]; then
+    source ~/.zshrc.local.post
+fi
+
