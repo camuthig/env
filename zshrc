@@ -79,7 +79,9 @@ export EDITOR=vim
 # work, be sure to add the CLOUDSDK_PYTHON value to an appropriate Python binary
 if [ -x "$(command -v gcloud)" ]; then
     gcloud_root=$(gcloud info --format flattened | grep installation.sdk_root | cut -d' ' -f2- | xargs)
-    source "$gcloud_root/completion.zsh.inc"
+    if [ -f "$gcloud_root/completion.zsh.inc" ]; then
+        source "$gcloud_root/completion.zsh.inc"
+    fi
 fi
 # end Google Cloud
 
