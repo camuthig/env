@@ -25,7 +25,9 @@ Plug 'prabirshrestha/asyncomplete.vim'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'ryanolsonx/vim-lsp-python'
+" Uncomment to get access to Python language server.
+" This requires a `pip install python-language-server` to work properly
+" Plug 'ryanolsonx/vim-lsp-python'
 
 " Colors
 Plug 'aonemd/kuroi.vim'
@@ -94,7 +96,8 @@ set incsearch
 set ignorecase
 set smartcase
 set showmatch
-map <leader><space> :let @/=''<cr> " clear search
+" Clear search highlighting
+map <leader><space> :noh<CR>
 
 " Remap help key.
 inoremap <F1> <ESC>:set invfullscreen<CR>a
