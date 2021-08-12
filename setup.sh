@@ -23,6 +23,9 @@ if [ -f /etc/lsb-release ]; then
         tmux
 fi
 
+# Add blank aliases file
+touch ~/.aliases
+
 # Add config directory
 mkdir ~/.config
 
@@ -51,9 +54,11 @@ cp tmux.conf ~/.tmux.conf
 echo Installing oh-my-zsh
 RUNZSH=no sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 cp zshrc ~/.zshrc
+cp -r -v oh-my-zsh/* ~/.oh-my-zsh/
 
 # Install custom plugins
-git clone git@github.com:softmoth/zsh-vim-mode.git $ZSH_CUSTOM/plugins/zsh-vim-mode
-git clone git@github.com:darvid/zsh-poetry.git $ZSH_CUSTOM/plugins/poetry
+export ZSH_CUSTOM=~/.oh-my-zsh/custom
+git clone https://github.com/softmoth/zsh-vim-mode.git $ZSH_CUSTOM/plugins/zsh-vim-mode
+git clone https://github.com/darvid/zsh-poetry.git $ZSH_CUSTOM/plugins/poetry
 git clone https://github.com/zsh-users/zsh-autosuggestions.git $ZSH_CUSTOM/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting

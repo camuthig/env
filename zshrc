@@ -93,6 +93,12 @@ if [ -d "$HOME/.poetry" ]; then
     export PATH="$HOME/.poetry/bin:$PATH"
 fi
 
+if [ -d "$HOME/.pyenv" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+fi
+
 # Rust
 if [ -d "$HOME/.cargo" ]; then
     export PATH="$HOME/.cargo/bin:$PATH"
@@ -109,6 +115,13 @@ if [ -x "$(command -v go)" ]; then
     export PATH="/usr/lib/go/bin:$PATH"
     export PATH="$GOPATH/bin:$PATH"
 fi
+
+# Node
+if [ -d "$HOME/.nvm" ]; then
+	export NVM_DIR="$HOME/.nvm"
+	\. "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
+
 
 # Kitty
 if [ -x "$(command -v kitty)" ]; then
