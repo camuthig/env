@@ -116,9 +116,9 @@ A layer specific to playing Overwatch, focusing on left-hand controls.
   //┌────────┬──────────────┬───────────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
      KC_NO,   KC_NO,         KC_NO,          KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   //├────────┼──────────────┼───────────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_NO,   VIM_SAVE_QUIT, VIM_SAVE,       KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+     KC_NO,   VIM_SAVE_QUIT, VIM_SAVE,       KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_UP,   KC_NO,   KC_NO,   KC_NO,
   //├────────┼──────────────┼───────────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-     KC_NO,   KC_NO,         KC_NO,          KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
+     KC_NO,   KC_NO,         KC_NO,          KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_LEFT, KC_DOWN, KC_RGHT, KC_NO,   KC_NO,
   //├────────┼──────────────┼───────────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
      KC_NO,   KC_NO,         VIM_FORCE_QUIT, KC_NO,   KC_NO,   KC_NO,   KC_NO,            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
   //└────────┴──────────────┴───────────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
@@ -141,38 +141,6 @@ A layer specific to playing Overwatch, focusing on left-hand controls.
   )
 
 
-/*
-An empty layer example that uses the lower layer for all keys. To create a new layer, copy this and give it a unique name.
-*/
-//   [_BELOW] = LAYOUT(
-//   //┌────────┬────────┬────────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-//      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______,  _______, _______,
-//   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-//      _______, _______, _______, _______, _______, _______,                            _______, _______, _______, _______,  _______, _______,
-//   //├────────┼────────┼────────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-//      _______, _______, _______, _______, _______,  _______,                           _______, _______, _______, _______,  _______, _______,
-//   //├────────┼────────┼────────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-//      _______, _______, _______, _______,  _______, _______, _______,         _______, _______, _______, _______, _______,  _______, _______,
-//   //└────────┴────────┴────────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-//                                     _______, _______, _______,                   _______, _______, _______
-//                                 // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
-//   ),
-/*
-An empty layer example. To create a new layer, copy this and give it a unique name.
-*/
-//   [_EMPTY] = LAYOUT(
-//   //┌────────┬───────┬───────┬────────┬────────┬────────┐                          ┌────────┬────────┬────────┬────────┬────────┬────────┐
-//      KC_NO,   KC_NO,  KC_NO,  KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-//   //├────────┼───────┼───────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-//      KC_NO,   KC_NO,  KC_NO,  KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-//   //├────────┼───────┼───────┼────────┼────────┼────────┤                          ├────────┼────────┼────────┼────────┼────────┼────────┤
-//      KC_NO,   KC_NO,  KC_NO,  KC_NO,   KC_NO,   KC_NO,                              KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-//   //├────────┼───────┼───────┼────────┼────────┼────────┼────────┐        ┌────────┼────────┼────────┼────────┼────────┼────────┼────────┤
-//      KC_NO,   KC_NO,  KC_NO,  KC_NO,   KC_NO,   KC_NO,   KC_NO,            KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,   KC_NO,
-//   //└────────┴───────┴───────┴───┬────┴───┬────┴───┬────┴───┬────┘        └───┬────┴───┬────┴───┬────┴───┬────┴────────┴────────┴────────┘
-//                                    KC_NO,   KC_NO,   KC_NO,                     KC_NO,   KC_NO,   KC_NO
-//                               // └────────┴────────┴────────┘                 └────────┴────────┴────────┘
-//   ),
 };
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
@@ -224,6 +192,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       } else {
          // key released
       }
+      return false;
+      break;
    case VIM_SAVE_QUIT:
       if (record->event.pressed) {
         tap_code(KC_ESC);
@@ -232,6 +202,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       } else {
          // key released
       }
+      return false;
+      break;
    case VIM_FORCE_QUIT:
       if (record->event.pressed) {
         tap_code(KC_ESC);
@@ -240,11 +212,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       } else {
          // key released
       }
+      return false;
+      break;
   }
   return true;
 }
 
-void encoder_update_user(uint8_t index, bool clockwise) {
+bool encoder_update_user(uint8_t index, bool clockwise) {
     if (index == 0) {
         if (clockwise) {
             tap_code(KC_VOLU);
@@ -259,4 +233,5 @@ void encoder_update_user(uint8_t index, bool clockwise) {
             tap_code(KC_PGUP);
         }
     }
+    return true;
 }
