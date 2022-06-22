@@ -1,0 +1,4 @@
+# ~/.ideavimrc
+
+set relativenumber true
+set number
