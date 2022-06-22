@@ -74,20 +74,7 @@ fi
 source ~/.aliases
 export EDITOR=vim
 
-# Google Cloud
-# If the system is working with Python3, then GCloud needs to point to a version of Python2.7. To make this
-# work, be sure to add the CLOUDSDK_PYTHON value to an appropriate Python binary
-if [ -x "$(command -v gcloud)" ]; then
-    gcloud_root=$(gcloud info --format flattened | grep installation.sdk_root | cut -d' ' -f2- | xargs)
-    if [ -f "$gcloud_root/completion.zsh.inc" ]; then
-        source "$gcloud_root/completion.zsh.inc"
-    fi
-fi
-# end Google Cloud
-
 # Python
-# Quiet warnings
-export PYTHONWARNINGS="ignore"
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 if [ -d "$HOME/.poetry" ]; then
     export PATH="$HOME/.poetry/bin:$PATH"
@@ -105,14 +92,23 @@ if [ -d "$HOME/.cargo" ]; then
 fi
 
 # Ruby
+if [ -d "$HOME/.rvm" ]; then
+    source $HOME/.rvm/scripts/rvm
+fi
+
 if [ -f '/etc/profile.d/rvm.sh' ]; then
     source /etc/profile.d/rvm.sh
 fi
 
 # Golang
+if [ -d /usr/local/go ]; then
+    export PATH="/usr/local/go/bin:$PATH"
+elif [ -d /usr/lib/go ]; then
+    export PATH="/usr/lib/go/bin:$PATH"
+fi
+
 if [ -x "$(command -v go)" ]; then
     export GOPATH="$HOME/go"
-    export PATH="/usr/lib/go/bin:$PATH"
     export PATH="$GOPATH/bin:$PATH"
 fi
 
@@ -143,4 +139,7 @@ export KEYTIMEOUT=1
 if [ -f "$HOME/.zshrc.local.post" ]; then
     source ~/.zshrc.local.post
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
